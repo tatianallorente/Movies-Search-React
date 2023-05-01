@@ -1,0 +1,65 @@
+:root {
+  --error-color: #f94949;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
+
+.searchBox {
+  display: flex;
+}
+
+.searchBox input[type=text] {
+  margin-right: 1rem;
+}
+
+.form input[type=checkbox] {
+  border-color:red ;
+}
+
+.toggleSort {
+  margin-top: 0.5rem;
+}
+
+.toggleSort label:not(.switch) {
+  margin-left: 0.5rem;
+}
+
+.moviesList {
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 0;
+  text-align: center;
+}
+
+.moviesList li h3, .moviesList li p {
+  margin: 0;
+}
+
+.moviesList li img {
+  margin-top: 1rem;
+}
+
+.error {
+  color: var(--error-color);
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
+
+.errorMsg {
+  background-color: var(--error-color);
+  color: #fff;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+}
+
+.spinner {
+  display: flex;
+  place-content: center;
+}

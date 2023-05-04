@@ -1,5 +1,7 @@
 import PropTypes from "prop-types";
 
+import noImg from "../assets/img/no_img.png";
+
 function MoviesList({ movies, error }) {
 	return (
 		<>
@@ -10,10 +12,15 @@ function MoviesList({ movies, error }) {
 			) : (
 				<ul className="moviesList">
 					{movies?.map((movie) => (
-						<li key={movie.id}>
-							<h3>{movie.title}</h3>
-							<p>{movie.year}</p>
-							<img src={movie.poster} alt={`poster-${movie.title}`} />
+						<li className="moviesList-item" key={movie.id}>
+							<img
+								src={movie.poster !== "N/A" ? movie.poster : noImg}
+								alt={`poster-${movie.title}`}
+							/>
+							<div className="moviesList-item--title">
+								<h3>{movie.title}</h3>
+								<p>{movie.year}</p>
+							</div>
 						</li>
 					))}
 				</ul>

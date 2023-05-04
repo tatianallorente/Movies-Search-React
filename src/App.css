@@ -38,12 +38,33 @@
   text-align: center;
 }
 
-.moviesList li h3, .moviesList li p {
+.moviesList .moviesList-item {
+  display: flex;
+  flex-direction: column;
+  background: var(--border);
+  border-radius: 6px;
+}
+
+.moviesList .moviesList-item .moviesList-item--title {
+  margin: 0.5rem;
+}
+
+.moviesList .moviesList-item .moviesList-item--title h3, .moviesList .moviesList-item .moviesList-item--title p {
   margin: 0;
 }
 
-.moviesList li img {
-  margin-top: 1rem;
+.moviesList .moviesList-item .moviesList-item--title h3 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.moviesList .moviesList-item img {
+  flex: 1 1;
+  object-fit: cover;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  aspect-ratio: 1/1.5;
 }
 
 .error {

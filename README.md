@@ -1,4 +1,4 @@
-# Movies App
+# Movies Search
 
 > Buscador de películas usando la API https://www.omdbapi.com \
 > Demo: https://tatianallorente-moviessearch.netlify.app

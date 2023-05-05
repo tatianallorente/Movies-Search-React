@@ -1,6 +1,7 @@
 # Movies Search
 
 > Buscador de películas usando la API https://www.omdbapi.com \
+> Uso de los hooks: useState, useEffect, useRef, useMemo y useCallback. \
 > Demo: https://tatianallorente-moviessearch.netlify.app
 
 ---
@@ -22,8 +23,10 @@
 
 - Toggle para ordenar las películas alfabéticamente.
 - Se realiza la búsqueda automáticamente al escribir, aunque también hay un botón para buscar.
-- Las películas encontradas se muestran en un grid responsive.
+- Las películas encontradas se muestran en un grid responsive con paginación mediante infinite scroll.
 
 # Instalaciones necesarias
 
     npm install just-debounce-it -E
+
+    npm install intersection-observer

@@ -1,7 +1,7 @@
 const API_KEY = "95e68c78";
 
-export const getMovies = async ({ search }) => {
-	const url = `https://www.omdbapi.com/?apikey=${API_KEY}&s=${search}`;
+export const getMovies = async ({ search, page = 1 }) => {
+	const url = `https://www.omdbapi.com/?apikey=${API_KEY}&s=${search}&page=${page}`;
 
 	try {
 		const response = await fetch(url);
@@ -17,7 +17,7 @@ export const getMovies = async ({ search }) => {
 					poster: movie.Poster,
 				}));
 
-				return mappedMovies;
+				return { movies: mappedMovies, totalResults: movies.totalResults };
 			} else {
 				throw new Error(movies?.Error);
 			}

@@ -2,11 +2,30 @@
   --error-color: #f94949;
 }
 
+body {
+	margin: 0px auto !important;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app {
+  flex-grow: 1;
+}
+
 .header {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 2.5rem;
+}
+
+.footer {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
 }
 
 .searchBox {
@@ -27,6 +46,11 @@
 
 .toggleSort label:not(.switch) {
   margin-left: 0.5rem;
+}
+
+.searchResults span {
+  color: var(--focus);
+  font-weight: 500;
 }
 
 .moviesList {
@@ -80,7 +104,36 @@
   padding: 0.5rem 1rem;
 }
 
-.spinner {
-  display: flex;
-  place-content: center;
+.loader {
+  width: 100%;
+  height: 6px;
+  display: inline-block;
+  position: relative;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.loader::after {
+  content: '';
+  width: 33%;
+  height: 6px;
+  background: var(--focus);
+  border-radius: 4px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  animation: animloader 2s linear infinite;
+}
+
+@keyframes animloader {
+  0% {
+    left: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    left: 100%;
+    transform: translateX(0%);
+  }
 }

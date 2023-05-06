@@ -2,6 +2,7 @@ import { useCallback, useMemo, useRef, useState, useEffect } from "react";
 import { getMovies } from "../services/getMovies";
 
 const INITIAL_PAGE = 1;
+const MOVIES_PER_PAGE = 10;
 
 export function useMovies({ search, sorted }) {
 	const [movies, setMovies] = useState([]);
@@ -12,12 +13,17 @@ export function useMovies({ search, sorted }) {
 
 	// Evitar llamar a la API para la misma búsqueda
 	const previousSearch = useRef(search);
-
-	const totalPages = useRef(null);
-	const totalMovies = useRef(null);
+	const totalMovies = useRef(0);
 
 	useEffect(() => {
-		if (page === INITIAL_PAGE || page > totalPages.current) return;
+		if (search.length < 3 && movies.length > 0) {
+			setMovies([]);
+		}
+	}, [search]);
+
+	useEffect(() => {
+		const totalPages = Math.round(totalMovies.current / MOVIES_PER_PAGE);
+		if (page === INITIAL_PAGE || page > totalPages) return;
 		searchMoviesNextPage({ search });
 	}, [page]);
 
@@ -36,10 +42,7 @@ export function useMovies({ search, sorted }) {
 
 			const { movies, totalResults } = await getMovies({ search });
 			setMovies(movies);
-
-			const maxPage = Math.round(totalResults / 10);
-			totalPages.current = maxPage;
-			totalMovies.current = totalResults;
+			totalMovies.current = parseInt(totalResults);
 		} catch (error) {
 			setMovies([]);
 			setError(error.message);

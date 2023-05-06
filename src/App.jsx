@@ -3,7 +3,7 @@ import debounce from "just-debounce-it";
 
 import MoviesList from "./components/MoviesList";
 import Search from "./components/Search";
-import { Footer } from "./components/ui";
+import { ErrorMsg, Footer, Loader } from "./components/ui";
 import { useMovies, useNearScreen } from "./components/hooks";
 import "./App.css";
 
@@ -53,20 +53,15 @@ function App() {
 					/>
 				</header>
 				<main>
-					{loading ? (
-						<p className="loader"></p>
-					) : (
+					{loading && <Loader />}
+					{movies?.length > 0 && (
 						<>
-							{movies?.length > 0 && (
-								<p className="searchResults">
-									<span>{totalMovies}</span> resultados para <span>{search}</span>
-								</p>
-							)}
-							<MoviesList movies={movies} error={error} />
-							{movies?.length > 0 && <div id="visor" ref={externalRef}></div>}
-							{loadingNextPage && <p className="loader"></p>}
+							<MoviesList movies={movies} totalMovies={totalMovies} search={search} />
+							<div id="visor" ref={externalRef}></div>
 						</>
 					)}
+					{error !== null && <ErrorMsg error={error} />}
+					{loadingNextPage && <Loader />}
 				</main>
 			</div>
 			<Footer />

@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import "../../assets/styles/toggleSwitch.css";
 
-function ToggleSwitch({ name, value, onChange }) {
+export function ToggleSwitch({ name, value, onChange }) {
 	return (
 		<label className="switch">
 			<input type="checkbox" name={name} value={value} onChange={onChange} />
@@ -9,8 +9,6 @@ function ToggleSwitch({ name, value, onChange }) {
 		</label>
 	);
 }
-
-export default ToggleSwitch;
 
 ToggleSwitch.propTypes = {
 	name: PropTypes.string.isRequired,
